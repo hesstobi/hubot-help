@@ -1,6 +1,6 @@
 # hubot-help
 
-A hubot script to show available hubot commands
+A hubot script to show available hubot commands in markdown.
 
 See [`src/help.coffee`](src/help.coffee) for full documentation.
 

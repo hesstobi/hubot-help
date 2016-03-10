@@ -61,10 +61,11 @@ module.exports = (robot) ->
       cmds = cmds.filter (cmd) ->
         cmd.match new RegExp(filter, 'i')
       if cmds.length == 0
-        msg.send "No available commands match #{filter}"
+        msg.send "No available commands match `#{filter}``"
         return
 
-    emit = cmds.join "\n"
+    cmds = formatHelpCommands(cmds)
+    emit = "|Input|Action|\n|-:|-|\n" + cmds.join "\n"
 
     msg.send emit
 
@@ -84,3 +85,9 @@ renamedHelpCommands = (robot) ->
   help_commands = robot.helpCommands().map (command) ->
     command.replace /^hubot/i, robot_name
   help_commands.sort()
+
+formatHelpCommands = (cmds) ->
+  cmds.map( (cmd) ->
+    parts = cmd.split("-")
+    "|`"+ parts[0].trim() + "`| " + parts[1].trim() + "|"
+  )
