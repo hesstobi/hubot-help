@@ -65,7 +65,9 @@ module.exports = (robot) ->
         return
 
     cmds = formatHelpCommands(cmds)
-    emit = "|Input|Action|\n|-:|-|\n" + cmds.join "\n"
+    emit = "I'm a smart bot powered by [Hubot](https://hubot.github.com).\n" +
+           "I can help you with these commands\n\n" + 
+           "|Input|Action|\n|-:|-|\n" + cmds.join "\n"
 
     msg.send emit
 
